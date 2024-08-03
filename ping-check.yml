@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Ping check to ensure hosts are reachable
+      ping:
+      register: ping_result
+
+    - name: Print success notification
+      debug:
+        msg: "Ping to {{ inventory_hostname }} was successful."
+      when: ping_result.ping == "pong"

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Force stop httpd
+      service:
+        name: httpd
+        enabled: true
+        state: stopped
+        force: yes
+
